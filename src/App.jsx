@@ -1,20 +1,27 @@
 import { useState } from 'react'
-
 import './App.css'
+import ContactList from './components/ContactList'
+import SelectedContact from './components/selectedContact'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedContactId, setSelectedContactId] = useState(null);
 
   return (
     <>
-      
-      
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        
+    {selectedContactId ? (
+      <SelectedContact
+       selectedContactId={selectedContactId}
+       setSelectedContactId={setSelectedContactId}/>
+
+
+    ) : (
+
+    <ContactList
+    setSelectedContactId={setSelectedContactId}/>
+    )}
     </>
   )
 }
 
-export default App
+export default App;
